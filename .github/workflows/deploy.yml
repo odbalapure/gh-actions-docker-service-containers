@@ -19,7 +19,7 @@ jobs:
       # MONGODB_CLUSTER_ADDRESS: mongodb
       # Since we are not running nodejs on a container and directly on runner
       # We use localhost instead of the container name as per docs (mongo)
-      MONGODB_CLUSTER_ADDRESS: localhost:27017
+      MONGODB_CLUSTER_ADDRESS: 127.0.0.1:27017
       MONGODB_USERNAME: root
       MONGODB_PASSWORD: example
       PORT: 8080
