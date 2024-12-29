@@ -16,13 +16,19 @@ jobs:
       image: node:16
     env:
       MONGODB_CONNECTION_PROTOCOL: mongodb
-      MONGODB_CLUSTER_ADDRESS: mongodb
+      # MONGODB_CLUSTER_ADDRESS: mongodb
+      # Since we are not running nodejs on a container and directly on runner
+      # We use localhost instead of the container name as per docs (mongo)
+      MONGODB_CLUSTER_ADDRESS: localhost:27017
       MONGODB_USERNAME: root
       MONGODB_PASSWORD: example
       PORT: 8080
     services:
       mongodb:
         image: mongo
+        # Not required if node does not run on a container
+        ports:
+          - 27017:27017
         env:
           MONGO_INITDB_ROOT_USERNAME: root
           MONGO_INITDB_ROOT_PASSWORD: example
